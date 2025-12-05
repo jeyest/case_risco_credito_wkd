@@ -133,8 +133,9 @@ Etapas executadas:
 
 - divisão treino/teste  
 - codificação categórica (One-Hot e Ordinal conforme necessário)  
-- normalização das variáveis numéricas  
-- treinamento e validação de modelos:
+- normalização das variáveis numéricas
+
+Treinamento e validação de modelos:
   - Regressão Logística  
   - Árvore de Decisão  
   - Random Forest  
