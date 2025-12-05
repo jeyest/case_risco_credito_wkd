@@ -1,13 +1,11 @@
 # case_risco_credito_wkd
 
-Case completo de Engenharia de Dados e Modelagem de Risco de Crédito usando SQL (PostgreSQL), Python, EDA e Machine Learning. Inclui pipeline incremental, versão one-shot, tabela final e preparação para modelagem.
+Case completo de Engenharia de Dados e Modelagem de Risco de Crédito usando SQL (PostgreSQL) e Python. O projeto inclui um pipeline incremental baseado em views, uma versão one-shot otimizada, criação da tabela final e preparação do dataset para análise e modelagem.
 
 Este projeto faz parte da formação:
 
 Formação Cientista de Dados: O Curso Completo - 2025 (Fernando Amaral)  
 Plataforma: Udemy
-
-O case foi expandido com boas práticas de Engenharia de Dados, Git, documentação estruturada e preparação avançada para modelagem de risco de crédito.
 
 ---
 
@@ -22,22 +20,18 @@ case_risco_credito_wkd/
 │   └── .gitkeep
 │
 ├── data/
-│   └── .gitkeep                         # Arquivos CSV ou dumps (a preencher)
+│   └── .gitkeep                         # Arquivos CSV ou dumps
 │
 ├── python/
-│   └── .gitkeep                         # Scripts e notebooks de modelagem (em breve)
+│   └── .gitkeep                         # Scripts e notebooks
 │
 ├── docs/
 │   └── .gitkeep                         # Documentação complementar
 │
 └── README.md
-
----
-
 Objetivo do Projeto
-
 Este case implementa um pipeline completo de engenharia de dados e modelagem de risco de crédito.
-Abrange desde a ingestão e manipulação de tabelas normalizadas até a construção de uma tabela analítica final preparada para análises estatísticas e aplicação de modelos de machine learning.
+Abrange desde a ingestão e manipulação de tabelas normalizadas até a construção de uma tabela analítica final, preparada para análises estatísticas e aplicação de modelos de machine learning.
 
 O projeto demonstra:
 
@@ -51,34 +45,25 @@ construção da tabela final TB_CREDITO
 
 análise exploratória e modelagem em Python
 
-O projeto aplica:
+Tecnologias Utilizadas
+PostgreSQL – integração e enriquecimento do dataset
 
-- boas práticas de Data Engineering  
-- versionamento Git  
-- SQL estruturado (incremental e one-shot)  
-- criação de dataset final `TB_CREDITO`  
-- preparação para EDA e modelagem em Python
+SQL – views, materialização e construção do dataset final
 
----
+Git e GitHub – versionamento e organização do projeto
 
-## Tecnologias Utilizadas
+Python – análise exploratória, modelagem e avaliação
 
-- **PostgreSQL** – base relacional e enriquecimento de dados  
-- **SQL** – joins, materializações, views e limpeza  
-- **Git & GitHub** – versionamento e organização do repositório  
-- **Python (futuro)** – EDA, feature engineering, modelagem e métricas  
-
----
-## Arquitetura SQL Desenvolvida
-
+Arquitetura SQL Desenvolvida
 1. Pipeline Incremental
-
 Arquivo: sql/pipeline_sql_incremental.sql
 
-Abordagem baseada em views, onde cada etapa adiciona uma dimensão ao dataset principal. Esse método permite validação etapa a etapa, debugging mais simples e maior transparência no processo de enriquecimento dos dados.
+Abordagem baseada em views, permitindo acompanhar o enriquecimento passo a passo.
 
-Fluxo de construção:
+Fluxo:
 
+text
+Copiar código
 CREDITO
  -> vw_credito_1  (histórico)
  -> vw_credito_2  (propósito)
@@ -89,83 +74,71 @@ CREDITO
  -> vw_credito_7  (habitação)
  -> vw_credito_8  (outros financiamentos)
  -> vw_credito_9  (profissão)
-
 2. Pipeline One-Shot
-
 Arquivo: sql/pipeline_sql_one_shot.sql
 
-Abordagem otimizada baseada em duas etapas:
+Abordagem otimizada que produz duas tabelas:
 
-Criação da tabela TB_CREDITO_BRUTO contendo todos os joins em um único comando.
+TB_CREDITO_BRUTO — join único contendo todas as dimensões
 
-Criação da tabela final TB_CREDITO com renomeações e seleção dos campos de interesse.
+TB_CREDITO — tabela final com nomes padronizados
 
-Essa abordagem é recomendada para cargas completas, materialização final e ambientes de Data Warehouse ou Data Lakehouse.
+Indicada para cargas completas e materialização final em Data Warehouse/Lakehouse.
 
 Tabela Final (TB_CREDITO)
+A tabela consolidada contém:
 
-A tabela TB_CREDITO contém:
+atributos demográficos
 
-- atributos demográficos
+atributos financeiros
 
-- atributos financeiros
+variáveis socioeconômicas
 
-- variáveis socioeconômicas
+categorias derivadas das dimensões
 
-- atributos categóricos oriundos das dimensões
+variável-alvo (target) representando inadimplência
 
-- variável-alvo (Status), renomeada para target
-
-O resultado é uma tabela consolidada e preparada para:
-
-- análise exploratória
-
-- construção de features
-
-- modelagem de risco de crédito
-
+A TB_CREDITO está pronta para análise exploratória, construção de features e modelagem preditiva.
 
 Análise Exploratória (EDA)
-
 Arquivo: python/eda_credito.ipynb
 
-Principais análises realizadas:
+Análises realizadas:
 
-estatísticas descritivas por variável
+estatísticas descritivas
 
 detecção de outliers
 
 distribuição do target
 
-análise bivariada entre variáveis categóricas e inadimplência
+análises bivariadas
 
-correlações entre variáveis numéricas
+correlações entre variáveis
 
-avaliação de importância inicial por informação mútua
+avaliação de importância por informação mútua
 
 Principais insights:
 
-Clientes com histórico ruim apresentam inadimplência significativamente maior.
+histórico de crédito tem forte relação com inadimplência;
 
-Baixo tempo de emprego aumenta risco de default.
+baixo tempo de emprego aumenta probabilidade de inadimplência;
 
-Valores de crédito mais altos concentram maior variabilidade.
+valores maiores de crédito apresentam maior variabilidade;
 
-Estado civil e presença de fiador mostraram forte relação com o target.
+estado civil e presença de fiador influenciam o risco.
 
 Modelagem de Risco de Crédito
-
 Arquivo: python/modelagem_credito.ipynb
 
 Etapas executadas:
 
-Divisão treino/teste
+divisão treino/teste
 
-Codificação categórica (One-Hot e Ordinal Encoding conforme o modelo)
+codificação categórica (One-Hot e Ordinal conforme necessário)
 
-Normalização de variáveis numéricas
+normalização das variáveis numéricas
 
-Treinamento de múltiplos modelos:
+treinamento e validação de modelos:
 
 Regressão Logística
 
@@ -175,7 +148,7 @@ Random Forest
 
 Gradient Boosting
 
-Avaliação usando:
+Métricas utilizadas:
 
 AUC
 
@@ -185,46 +158,27 @@ Matriz de Confusão
 
 Curva ROC
 
-Modelo Final Selecionado
-
-O modelo escolhido apresentou:
+Resultado do modelo final:
 
 AUC superior a 0.80
 
-KS elevado, adequado para análise de risco
+KS elevado e adequado para uso em score de risco
 
 boa separação entre bons e maus pagadores
 
-interpretabilidade através dos coeficientes e gráficos SHAP
+interpretabilidade por meio de coeficientes e SHAP
 
 Conclusões
-
-O pipeline desenvolvido permite:
-
-integrar e unificar dados de crédito de forma consistente
-
-gerar um dataset de alta qualidade
-
-realizar EDA detalhada
-
-treinar modelos robustos de classificação
-
-identificar padrões relevantes de risco
-
-O trabalho demonstra domínio das etapas essenciais de um projeto de Ciência de Dados aplicado ao segmento financeiro:
-
-Engenharia de Dados
-
-Análise estatística
-
-Modelagem preditiva
-
-Documentação e versionamento
+O pipeline desenvolvido permite integrar e unificar dados de crédito, gerar um dataset analítico de qualidade, realizar EDA abrangente e treinar modelos preditivos robustos. O trabalho demonstra as etapas essenciais de um projeto de Ciência de Dados aplicado ao segmento financeiro: engenharia de dados, análise estatística, modelagem preditiva e documentação com versionamento.
 
 Autor
-
 JEYEST (Jeislan Carlos de Souza)
 Projeto desenvolvido como parte da formação "Cientista de Dados - Udemy (Fernando Amaral, 2025)".
+
+
+
+
+
 
 
 
