@@ -10,7 +10,6 @@ Plataforma: Udemy
 ---
 ## Estrutura do Repositório
 '''
-'''
 
 case_risco_credito_wkd/
 │
@@ -29,6 +28,7 @@ case_risco_credito_wkd/
 │ └── .gitkeep # Documentação complementar
 │
 └── README.md
+
 '''
 ---
 ## Objetivo do Projeto
