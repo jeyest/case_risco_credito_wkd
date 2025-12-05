@@ -147,7 +147,7 @@ O diretório `/python` receberá:
 
 ## Contato
 
-**Autor:** JEYEST (Jeislan Carlos de Souza)  
+**Autor:** (Jeislan Carlos de Souza)  
 Repositório criado para fins educacionais e demonstração de boas práticas de Engenharia e Ciência de Dados.
 
 
