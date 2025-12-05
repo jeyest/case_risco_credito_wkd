@@ -31,7 +31,7 @@ case_risco_credito_wkd/
 └── README.md
 
 ---
-
+## Estrutura do Repositório
 ## Objetivo do Projeto
 
 Este case implementa um pipeline completo de engenharia de dados e modelagem de risco de crédito.  
