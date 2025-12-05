@@ -10,6 +10,8 @@ Plataforma: Udemy
 ---
 ## Estrutura do Repositório
 '''
+'''
+
 case_risco_credito_wkd/
 │
 ├── sql/
