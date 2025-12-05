@@ -32,119 +32,125 @@ O projeto aplica:
 case_risco_credito_wkd/
 │
 ├── sql/
-│ ├── pipeline_sql_incremental.sql # Pipeline incremental (views)
-│ ├── pipeline_sql_one_shot.sql # Pipeline em join único (materialização)
+│ ├── pipeline_sql_incremental.sql # Pipeline incremental usando views
+│ ├── pipeline_sql_one_shot.sql # Pipeline completo em join único
 │ └── .gitkeep
 │
 ├── data/
-│ └── .gitkeep # Dados brutos ou extraídos
+│ └── .gitkeep # Arquivos CSV ou dumps (a preencher)
 │
 ├── python/
-│ └── .gitkeep # Scripts de EDA e modelagem (em breve)
+│ └── .gitkeep # Scripts e notebooks de modelagem (em breve)
 │
 ├── docs/
 │ └── .gitkeep # Documentação complementar
 │
 └── README.md
 
+---
+
+## Tecnologias Utilizadas
+
+- **PostgreSQL** – base relacional e enriquecimento de dados  
+- **SQL** – joins, materializações, views e limpeza  
+- **Git & GitHub** – versionamento e organização do repositório  
+- **Python (futuro)** – EDA, feature engineering, modelagem e métricas  
 
 ---
 
-## 🛠 Tecnologias utilizadas
-
-- **PostgreSQL** – modelagem e enriquecimento das tabelas  
-- **SQL** – joins, views e materialização de tabelas analíticas  
-- **Git + GitHub** – versionamento e estruturação do projeto  
-- **Python (em breve)** – EDA, feature engineering e modelagem preditiva  
-
----
-
-## 🧱 Pipeline Incremental (Views)
+## Pipeline Incremental (Views)
 
 O arquivo: sql/pipeline_sql_incremental.sql
 
-Implementa um fluxo incremental clássico:
+Contém 9 etapas sequenciais, cada uma adicionando uma dimensão ao dataset principal.
 
-1. Cada etapa adiciona uma dimensão.
-2. O enriquecimento pode ser validado passo a passo.
-3. Views permitem auditoria e debugging.
-
-Exemplo do fluxo:
+As views formam o fluxo:
 
 CREDITO
-→ vw_credito_1 ( + histórico )
-→ vw_credito_2 ( + propósito )
-→ vw_credito_3 ( + investimentos )
-...
-→ vw_credito_9 ( + profissão )
+→ vw_credito_1 (histórico)
+→ vw_credito_2 (propósito)
+→ vw_credito_3 (investimentos)
+→ vw_credito_4 (emprego)
+→ vw_credito_5 (estado civil)
+→ vw_credito_6 (fiador)
+→ vw_credito_7 (habitação)
+→ vw_credito_8 (outros financiamentos)
+→ vw_credito_9 (profissão)
 
+
+### Por que usar incremental?
+
+- facilita debugging  
+- permite validação etapa a etapa  
+- deixa o pipeline mais didático e auditável  
 
 ---
 
-## ⚡ Pipeline One-Shot
+## Pipeline One-Shot
 
 O arquivo: sql/pipeline_sql_one_shot.sql
 
-Contém uma abordagem otimizada em duas etapas:
+Implementa uma abordagem otimizada em duas etapas:
 
-1. **TB_CREDITO_BRUTO** — join único com todas as dimensões  
-2. **TB_CREDITO** — tabela final renomeada e padronizada (dataset para modelagem)
+### 1. TB_CREDITO_BRUTO  
+Join único com todas as tabelas dimensão.
 
-Ideal para Data Warehouse, Data Lakehouse ou cargas completas.
+### 2. TB_CREDITO  
+Tabela final, com nomes padronizados, pronta para análise e modelagem.
+
+### ✔ Por que usar one-shot?
+
+- útil para cargas completas (full load)  
+- ideal para Data Warehouse e Lakehouse  
+- simplifica a materialização final  
 
 ---
 
 ## Tabela Final: TB_CREDITO
 
-A tabela resultante contém variáveis:
+A tabela contém variáveis categóricas e numéricas sobre:
 
-- demográficas  
-- financeiras  
-- socioeconômicas  
-- categóricas enriquecidas pelas dimensões  
-- variável-alvo: **target** (`Status` 0/1)
+- perfil do cliente  
+- situação socioeconômica  
+- características do crédito  
+- fatores de risco  
+- variável-alvo (`target`) indicando inadimplência  
 
-Pronta para:
+Essa tabela será utilizada no Python para:
 
 - EDA  
-- feature engineering  
-- algoritmos de machine learning  
+- construção de variáveis  
+- modelagem preditiva  
+- métricas de risco (ROC, Gini, KS, AUC)  
 
 ---
 
-## Próximos passos (Python)
+## Próximos Passos (Python)
 
-1. Carregar `TB_CREDITO` no ambiente Python  
-2. Limpeza e tratamento de dados  
-3. Análise Exploratória (EDA)
-4. Codificação categórica  
-5. Balanceamento (se necessário)
-6. Modelos:
-   - Regressão Logística
-   - Árvores
-   - Random Forest
-   - Gradient Boosting
-   - Outros modelos candidatos
-7. Avaliação (ROC, KS, Gini, AUC)
-8. Explainability (SHAP)
+O diretório `/python` receberá:
 
-O diretório `/python` será preenchido com notebooks e scripts.
+### ✔ 1. Carregamento da TB_CREDITO via pandas  
+### ✔ 2. EDA completa (boxplot, distplots, correlações)  
+### ✔ 3. Tratamento de valores ausentes  
+### ✔ 4. Feature engineering  
+### ✔ 5. Modelagem:  
+- Regressão Logística  
+- Árvore  
+- Random Forest  
+- Gradient Boosting  
+- XGBoost / LightGBM  
 
----
-
-## Status Atual do Projeto
-
-✔ Estrutura Git/GitHub criada  
-✔ Pipelines SQL incremental e one-shot  
-✔ Preparação do ambiente para próxima etapa  
-
-Próximo: iniciar EDA e modelagem em Python.
+### ✔ 6. Avaliação de modelos  
+### ✔ 7. Explainability (SHAP)
 
 ---
 
 ## Contato
 
-*Autor: (Jeislan Carlos de Souza)
-Projeto desenvolvido para fins educacionais e demonstração de boas práticas de Engenharia de Dados.
+**Autor:** JEYEST (Jeislan Carlos de Souza)  
+Repositório criado para fins educacionais e demonstração de boas práticas de Engenharia e Ciência de Dados.
+
+
+
 
 
