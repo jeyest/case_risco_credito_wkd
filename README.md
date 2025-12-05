@@ -129,19 +129,19 @@ Essa tabela será utilizada no Python para:
 
 O diretório `/python` receberá:
 
-### ✔ 1. Carregamento da TB_CREDITO via pandas  
-### ✔ 2. EDA completa (boxplot, distplots, correlações)  
-### ✔ 3. Tratamento de valores ausentes  
-### ✔ 4. Feature engineering  
-### ✔ 5. Modelagem:  
+### 1. Carregamento da TB_CREDITO via pandas  
+### 2. EDA completa (boxplot, distplots, correlações)  
+### 3. Tratamento de valores ausentes  
+### 4. Feature engineering  
+### 5. Modelagem:  
 - Regressão Logística  
 - Árvore  
 - Random Forest  
 - Gradient Boosting  
 - XGBoost / LightGBM  
 
-### ✔ 6. Avaliação de modelos  
-### ✔ 7. Explainability (SHAP)
+### 6. Avaliação de modelos  
+### 7. Explainability (SHAP)
 
 ---
 
