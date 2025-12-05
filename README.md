@@ -8,24 +8,23 @@ Formação Cientista de Dados: O Curso Completo - 2025 (Fernando Amaral)
 Plataforma: Udemy
 
 ---
-
 ## Estrutura do Repositório
 
 case_risco_credito_wkd/
 │
 ├── sql/
-│   ├── pipeline_sql_incremental.sql     # Pipeline incremental usando views
-│   ├── pipeline_sql_one_shot.sql        # Pipeline completo em join único
-│   └── .gitkeep
+│ ├── pipeline_sql_incremental.sql # Pipeline incremental usando views
+│ ├── pipeline_sql_one_shot.sql # Pipeline completo em join único
+│ └── .gitkeep
 │
 ├── data/
-│   └── .gitkeep                         # Arquivos CSV ou dumps
+│ └── .gitkeep # Arquivos CSV ou dumps
 │
 ├── python/
-│   └── .gitkeep                         # Scripts e notebooks
+│ └── .gitkeep # Scripts e notebooks
 │
 ├── docs/
-│   └── .gitkeep                         # Documentação complementar
+│ └── .gitkeep # Documentação complementar
 │
 └── README.md
 
