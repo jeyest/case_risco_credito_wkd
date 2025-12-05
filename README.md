@@ -11,7 +11,7 @@ Plataforma: Udemy
 
 ## Estrutura do Repositório
 
-```text
+```text'''
 case_risco_credito_wkd/
 │
 ├── sql/
