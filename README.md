@@ -34,12 +34,22 @@ case_risco_credito_wkd/
 
 ---
 
-## Objetivo do projeto
+Objetivo do Projeto
 
 Este case implementa um pipeline completo de engenharia de dados e modelagem de risco de crédito.
-Abrange desde a ingestão e manipulação de tabelas normalizadas até a construção de uma tabela analítica final, preparada para análises estatísticas e aplicação de modelos de machine learning.
+Abrange desde a ingestão e manipulação de tabelas normalizadas até a construção de uma tabela analítica final preparada para análises estatísticas e aplicação de modelos de machine learning.
 
-O objetivo é demonstrar, de forma integrada, todas as etapas necessárias para transformar dados brutos em informações prontas para uso em processos de decisão e modelagem preditiva.
+O projeto demonstra:
+
+aplicação de boas práticas de Engenharia de Dados
+
+versionamento com Git e GitHub
+
+SQL estruturado tanto incremental quanto one-shot
+
+construção da tabela final TB_CREDITO
+
+análise exploratória e modelagem em Python
 
 O projeto aplica:
 
