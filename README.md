@@ -32,6 +32,7 @@ case_risco_credito_wkd/
 │
 └── README.md
 
+---
 
 ## Objetivo do projeto
 
