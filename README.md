@@ -10,7 +10,7 @@ Plataforma: Udemy
 ---
 ## Estrutura do Repositório
 
-\`\`\`
+```
 case_risco_credito_wkd/
 │
 ├── sql/
@@ -28,7 +28,7 @@ case_risco_credito_wkd/
 │   └── .gitkeep                         # Documentação complementar
 │
 └── README.md
-\`\`\`
+```
 
 
 
