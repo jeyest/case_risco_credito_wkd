@@ -98,7 +98,7 @@ Join único com todas as tabelas dimensão.
 ### 2. TB_CREDITO  
 Tabela final, com nomes padronizados, pronta para análise e modelagem.
 
-### ✔ Por que usar one-shot?
+### Por que usar one-shot?
 
 - útil para cargas completas (full load)  
 - ideal para Data Warehouse e Lakehouse  
