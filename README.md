@@ -30,34 +30,6 @@ case_risco_credito_wkd/
 │
 └── README.md
 
-# case_risco_credito_wkd
-
-Case completo de Engenharia de Dados e Modelagem de Risco de Crédito usando SQL (PostgreSQL) e Python. O projeto inclui um pipeline incremental baseado em views, uma versão one-shot otimizada, criação da tabela final e preparação do dataset para análise e modelagem.
-
-Este projeto faz parte da formação:
-
-Formação Cientista de Dados: O Curso Completo - 2025 (Fernando Amaral)  
-Plataforma: Udemy
-
----
-
-## Estrutura do Repositório
-
-- case_risco_credito_wkd/
-  - sql/
-    - pipeline_sql_incremental.sql     (Pipeline incremental usando views)
-    - pipeline_sql_one_shot.sql        (Pipeline completo em join único)
-    - .gitkeep
-  - data/
-    - .gitkeep                         (Arquivos CSV ou dumps)
-  - python/
-    - .gitkeep                         (Scripts e notebooks)
-  - docs/
-    - .gitkeep                         (Documentação complementar)
-  - README.md
-
----
-
 ## Objetivo do Projeto
 
 Este case implementa um pipeline completo de engenharia de dados e modelagem de risco de crédito.  
