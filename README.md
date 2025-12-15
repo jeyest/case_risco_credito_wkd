@@ -34,12 +34,23 @@ case_risco_credito_wkd/
 └── README.md
 ```
 
+Objetivo do Projeto
 
+O objetivo deste case é mostrar de forma integrada:
 
-## Objetivo do Projeto
+A construção de um pipeline de dados completo.
 
-Este case implementa um pipeline completo de engenharia de dados e modelagem de risco de crédito.  
-Abrange desde a ingestão e manipulação de tabelas normalizadas até a construção de uma tabela analítica final, preparada para análises estatísticas e aplicação de modelos de machine learning.
+A criação da tabela analítica final TB_CREDITO.
+
+A análise exploratória dos dados.
+
+A aplicação de testes estatísticos.
+
+A modelagem preditiva usando abordagens estatísticas e de machine learning.
+
+A preparação do modelo final para deploy.
+
+O projeto demonstra práticas de Engenharia de Dados, Ciência de Dados e versionamento com Git.
 
 O projeto demonstra:
 
@@ -51,117 +62,198 @@ O projeto demonstra:
 
 ---
 
-## Tecnologias Utilizadas
+Tecnologias Utilizadas
 
-- **PostgreSQL** – integração e enriquecimento do dataset  
-- **SQL** – views, materialização e construção do dataset final  
-- **Git e GitHub** – versionamento e organização do projeto  
-- **Python** – análise exploratória, modelagem e avaliação
+PostgreSQL para integração e enriquecimento dos dados.
 
----
+SQL para construção de views incrementais e pipelines one-shot.
 
-## Arquitetura SQL Desenvolvida
+Python para análise exploratória, testes estatísticos e modelagem.
 
-### 1. Pipeline Incremental
+Statsmodels para regressão logística no padrão SAS, SPSS e R.
 
-**Arquivo:** sql/pipeline_sql_incremental.sql
+Scikit-Learn para machine learning supervisionado.
 
-Abordagem baseada em views, permitindo acompanhar o enriquecimento passo a passo.
-
-Fluxo:
-
-- CREDITO -> vw_credito_1 (histórico)  
-- vw_credito_2 (propósito)  
-- vw_credito_3 (investimentos)  
-- vw_credito_4 (emprego)  
-- vw_credito_5 (estado civil)  
-- vw_credito_6 (fiador)  
-- vw_credito_7 (habitação)  
-- vw_credito_8 (outros financiamentos)  
-- vw_credito_9 (profissão)
+Git e GitHub para versionamento e documentação.
 
 ---
 
-### 2. Pipeline One-Shot
+Arquitetura SQL
+Pipeline Incremental
 
-**Arquivo:** sql/pipeline_sql_one_shot.sql
+Arquivo: sql/pipeline_sql_incremental.sql
 
-Abordagem otimizada que produz duas tabelas:
+Abordagem que utiliza views sucessivas, permitindo acompanhar o enriquecimento do dataset etapa por etapa.
 
-1. `TB_CREDITO_BRUTO` — join único contendo todas as dimensões  
-2. `TB_CREDITO` — tabela final com nomes padronizados
+Fluxo principal:
 
-Indicada para cargas completas e materialização final em Data Warehouse/Lakehouse.
+CREDITO
 
----
+vw_credito_1 historico
 
-## Tabela Final (TB_CREDITO)
+vw_credito_2 proposito
 
-A tabela consolidada contém:
+vw_credito_3 investimentos
 
-- atributos demográficos  
-- atributos financeiros  
-- variáveis socioeconômicas  
-- categorias derivadas das dimensões  
-- variável-alvo (`target`) representando inadimplência
+vw_credito_4 emprego
 
-A `TB_CREDITO` está pronta para análise exploratória, construção de features e modelagem preditiva.
+vw_credito_5 estado civil
 
----
+vw_credito_6 fiador
 
-## Análise Exploratória (EDA)
+vw_credito_7 habitacao
 
-**Arquivo:** python/eda_credito.ipynb
+vw_credito_8 outros financiamentos
 
-Principais análises realizadas:
+vw_credito_9 profissao
 
-- estatísticas descritivas  
-- detecção de outliers  
-- distribuição do target  
-- análises bivariadas  
-- correlações entre variáveis  
-- avaliação de relevância por informação mútua
+Essa abordagem facilita auditoria, qualidade dos dados e compreensão da linhagem.
 
-Principais insights:
+Pipeline One Shot
 
-- histórico de crédito tem forte relação com inadimplência  
-- baixo tempo de emprego aumenta probabilidade de inadimplência  
-- valores maiores de crédito apresentam maior variabilidade  
-- estado civil e presença de fiador influenciam o risco
+Arquivo: sql/pipeline_sql_one_shot.sql
 
----
+Abordagem otimizada que cria:
 
-## Modelagem de Risco de Crédito
+TB_CREDITO_BRUTO com todos os joins diretos das dimensões.
 
-**Arquivo:** python/modelagem_credito.ipynb
+TB_CREDITO tabela final normalizada para análise e modelagem.
 
-Etapas executadas:
+É a versão recomendada para materialização em ambiente de produção.
 
-- divisão treino/teste  
-- codificação categórica (One-Hot e Ordinal conforme necessário)  
-- normalização das variáveis numéricas
+Tabela Final TB_CREDITO
 
-Treinamento e validação de modelos:
-  - Regressão Logística  
-  - Árvore de Decisão  
-  - Random Forest  
-  - Gradient Boosting
+A tabela final contém:
 
-Métricas utilizadas:
+variáveis demográficas
 
-- AUC  
-- KS  
-- Matriz de Confusão  
-- Curva ROC
+variáveis financeiras
 
-Resultado do modelo final:
+características de crédito e risco
 
-- AUC superior a 0.80  
-- KS elevado e adequado para uso em score de risco  
-- boa separação entre bons e maus pagadores  
-- interpretabilidade por meio de coeficientes e SHAP
+indicadores socioeconômicos
 
----
+variável alvo target representando inadimplência
+
+A base é entregue pronta para análise estatística e modelagem.
+
+Análise Exploratória dos Dados
+
+Arquivo: python/eda_credito.ipynb
+
+Principais análises:
+
+estatísticas descritivas
+
+distribuição do target
+
+histogramas, boxplots e análise de outliers
+
+cruzamento entre variáveis
+
+análise de proporções de categorias
+
+identificação de variáveis com relevância univariada
+
+Principais conclusões:
+
+o histórico de crédito está entre as variáveis com maior relação com inadimplência
+
+variáveis socioeconômicas possuem menor poder discriminativo
+
+há desbalanceamento moderado (aprox. 70 por cento bons, 30 por cento maus)
+
+Modelagem Estatística e Machine Learning
+
+Arquivo: python/modelagem_credito.ipynb
+
+O processo inclui:
+
+Tratamento de dados e engenharia de variáveis.
+
+Aplicação de One Hot Encoding e padronização.
+
+Split treino e teste com estratificação.
+
+Testes estatísticos para cada tipo de variável.
+
+Modelagem estatística com regressão logística (statsmodels).
+
+Seleção de variáveis usando Stepwise Forward por bloco:
+
+se uma dummy do bloco é significativa, todo o bloco é mantido.
+
+Modelos de machine learning:
+
+Logistic Regression
+
+Decision Tree
+
+Random Forest
+
+Gradient Boosting
+
+SVM
+
+MLP Neural Network
+
+Métricas usadas
+
+AUC
+
+KS
+
+matriz de confusão
+
+precision
+
+recall
+
+F1
+
+curva ROC
+
+Resultado
+
+modelos apresentam desempenho esperado para bases com variáveis pouco informativas
+
+a regressão logística se mostrou estável e interpretável
+
+o Stepwise por bloco produziu um modelo mais parcimonioso
+
+o modelo final usado para deploy foi a Regressão Logística no Scikit-Learn somente com as variáveis selecionadas pelo Stepwise
+
+Modelo Final para Produção
+
+O modelo final utiliza apenas as variáveis selecionadas pelo Stepwise Forward por bloco, garantindo:
+
+consistência estatística
+
+interpretabilidade
+
+menor risco de overfitting
+
+facilidade de manutenção
+
+O pipeline completo do Scikit-Learn inclui o pré-processamento e gera o arquivo modelo_logistic_reduzido.pkl para uso em produção.
+
+Conclusão
+
+Este projeto demonstra um fluxo completo de risco de crédito, abordando:
+
+engenharia de dados
+
+análise exploratória
+
+testes estatísticos
+
+modelagem tradicional e moderna
+
+seleção de variáveis
+
+construção de modelo final pronto para deploy
+
+O case reflete práticas adotadas no setor financeiro e entrega um pipeline reproduzível e documentado de ponta a ponta.
 
 ## Conclusões
 
