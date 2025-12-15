@@ -34,7 +34,7 @@ case_risco_credito_wkd/
 └── README.md
 ```
 
-Objetivo do Projeto
+## Objetivo do Projeto
 
 O objetivo deste case é mostrar de forma integrada:
 
@@ -52,7 +52,7 @@ A preparação do modelo final para deploy.
 
 O projeto demonstra práticas de Engenharia de Dados, Ciência de Dados e versionamento com Git.
 
-O projeto demonstra:
+## O projeto demonstra:
 
 - aplicação de boas práticas de Engenharia de Dados  
 - versionamento com Git e GitHub  
@@ -62,7 +62,7 @@ O projeto demonstra:
 
 ---
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 PostgreSQL para integração e enriquecimento dos dados.
 
@@ -78,8 +78,9 @@ Git e GitHub para versionamento e documentação.
 
 ---
 
-Arquitetura SQL
-Pipeline Incremental
+## Arquitetura SQL
+
+## Pipeline Incremental
 
 Arquivo: sql/pipeline_sql_incremental.sql
 
@@ -109,7 +110,7 @@ vw_credito_9 profissao
 
 Essa abordagem facilita auditoria, qualidade dos dados e compreensão da linhagem.
 
-Pipeline One Shot
+## Pipeline One Shot
 
 Arquivo: sql/pipeline_sql_one_shot.sql
 
@@ -121,7 +122,7 @@ TB_CREDITO tabela final normalizada para análise e modelagem.
 
 É a versão recomendada para materialização em ambiente de produção.
 
-Tabela Final TB_CREDITO
+## Tabela Final TB_CREDITO
 
 A tabela final contém:
 
@@ -137,7 +138,7 @@ variável alvo target representando inadimplência
 
 A base é entregue pronta para análise estatística e modelagem.
 
-Análise Exploratória dos Dados
+## Análise Exploratória dos Dados
 
 Arquivo: python/eda_credito.ipynb
 
@@ -163,7 +164,7 @@ variáveis socioeconômicas possuem menor poder discriminativo
 
 há desbalanceamento moderado (aprox. 70 por cento bons, 30 por cento maus)
 
-Modelagem Estatística e Machine Learning
+## Modelagem Estatística e Machine Learning
 
 Arquivo: python/modelagem_credito.ipynb
 
@@ -197,7 +198,7 @@ SVM
 
 MLP Neural Network
 
-Métricas usadas
+## Métricas usadas
 
 AUC
 
@@ -213,7 +214,7 @@ F1
 
 curva ROC
 
-Resultado
+## Resultado
 
 modelos apresentam desempenho esperado para bases com variáveis pouco informativas
 
@@ -223,7 +224,7 @@ o Stepwise por bloco produziu um modelo mais parcimonioso
 
 o modelo final usado para deploy foi a Regressão Logística no Scikit-Learn somente com as variáveis selecionadas pelo Stepwise
 
-Modelo Final para Produção
+## Modelo Final para Produção
 
 O modelo final utiliza apenas as variáveis selecionadas pelo Stepwise Forward por bloco, garantindo:
 
@@ -237,7 +238,7 @@ facilidade de manutenção
 
 O pipeline completo do Scikit-Learn inclui o pré-processamento e gera o arquivo modelo_logistic_reduzido.pkl para uso em produção.
 
-Conclusão
+## Conclusão
 
 Este projeto demonstra um fluxo completo de risco de crédito, abordando:
 
@@ -254,10 +255,6 @@ seleção de variáveis
 construção de modelo final pronto para deploy
 
 O case reflete práticas adotadas no setor financeiro e entrega um pipeline reproduzível e documentado de ponta a ponta.
-
-## Conclusões
-
-O pipeline desenvolvido permite integrar e unificar dados de crédito, gerar um dataset analítico de qualidade, realizar EDA abrangente e treinar modelos preditivos robustos. O trabalho demonstra as etapas essenciais de um projeto de Ciência de Dados aplicado ao segmento financeiro: engenharia de dados, análise estatística, modelagem preditiva e documentação com versionamento.
 
 ---
 
