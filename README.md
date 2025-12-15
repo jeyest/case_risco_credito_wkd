@@ -4,7 +4,7 @@ Case completo de Risco de Crédito: Engenharia de Dados, Estatística e Machine 
 
 Este repositório apresenta um case completo de Engenharia de Dados e Modelagem de Risco de Crédito utilizando PostgreSQL, Python, Statsmodels e Scikit-Learn.
 
-O projeto cobre todas as etapas de um processo de modelagem utilizado no setor financeiro, desde a construção do dataset até a disponibilização do modelo final para produção. Inclui modelagem estatística com seleção de variáveis por Stepwise Forward e comparação com modelos de machine learning. Simula um processo de deploy do modelo com a escoragem de crédito. 
+O projeto cobre todas as etapas de um processo de modelagem utilizado no setor financeiro, desde a construção do dataset até a disponibilização do modelo final para produção. Inclui modelagem estatística com seleção de variáveis por Stepwise Forward e comparação com modelos de machine learning. Ao final, simula o deploy da solução com a escoragem de crédito.
 
 Este case faz parte da formação:
 "Formação Cientista de Dados. O Curso Completo - 2025"
