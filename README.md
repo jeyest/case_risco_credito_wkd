@@ -260,5 +260,5 @@ O case reflete práticas adotadas no setor financeiro e entrega um pipeline repr
 
 ## Autor
 
-**JEYEST (Jeislan Carlos de Souza)**  
+**(Jeislan Carlos de Souza)**  
 Projeto desenvolvido como parte da formação "Cientista de Dados - Udemy (Fernando Amaral, 2025)".
