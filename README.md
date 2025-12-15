@@ -114,13 +114,13 @@ Essa abordagem facilita auditoria, qualidade dos dados e compreensão da linhage
 
 Arquivo: sql/pipeline_sql_one_shot.sql
 
-Abordagem otimizada que cria:
+Abordagem única, otimizada para ambientes produtivos, se as bases de dados não forem grandes de forma que gere impactos no ambiente. 
+Gera:
 
 TB_CREDITO_BRUTO com todos os joins diretos das dimensões.
 
 TB_CREDITO tabela final normalizada para análise e modelagem.
 
-É a versão recomendada para materialização em ambiente de produção.
 
 ## Tabela Final TB_CREDITO
 
@@ -136,7 +136,7 @@ A tabela final contém:
 
 -variável alvo target representando inadimplência
 
-A base é entregue pronta para análise estatística e modelagem.
+O dataset é entregue pronta para análise estatística e modelagem.
 
 ## Análise Exploratória dos Dados
 
