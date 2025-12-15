@@ -1,10 +1,14 @@
 # case_risco_credito_wkd
 
-Case completo de Engenharia de Dados e Modelagem de Risco de Crédito usando SQL (PostgreSQL) e Python. O projeto inclui um pipeline incremental baseado em views, uma versão one-shot otimizada, criação da tabela final e preparação do dataset para análise e modelagem.
+Case completo de Risco de Crédito: Engenharia de Dados, Estatística e Machine Learning
 
-Este projeto faz parte da formação:
+Este repositório apresenta um case completo de Engenharia de Dados e Modelagem de Risco de Crédito utilizando PostgreSQL, Python, Statsmodels e Scikit-Learn.
 
-Formação Cientista de Dados: O Curso Completo - 2025 (Fernando Amaral)  
+O projeto cobre todas as etapas de um processo de modelagem utilizado no setor financeiro, desde a construção do dataset até a disponibilização do modelo final para produção. Inclui modelagem estatística com seleção de variáveis por Stepwise Forward e comparação com modelos de machine learning. Simula um processo de deploy do modelo com a escoragem de crédito. 
+
+Este case faz parte da formação:
+"Formação Cientista de Dados. O Curso Completo - 2025"
+Instrutor: Fernando Amaral
 Plataforma: Udemy
 
 ---
