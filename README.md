@@ -36,21 +36,21 @@ case_risco_credito_wkd/
 
 ## Objetivo do Projeto
 
-O objetivo deste case é mostrar de forma integrada:
+-O objetivo deste case é mostrar de forma integrada:
 
-A construção de um pipeline de dados completo.
+-A construção de um pipeline de dados completo.
 
-A criação da tabela analítica final TB_CREDITO.
+-A criação da tabela analítica final TB_CREDITO.
 
-A análise exploratória dos dados.
+-A análise exploratória dos dados.
 
-A aplicação de testes estatísticos.
+-A aplicação de testes estatísticos.
 
-A modelagem preditiva usando abordagens estatísticas e de machine learning.
+-A modelagem preditiva usando abordagens estatísticas e de machine learning.
 
-A preparação do modelo final para deploy.
+-A preparação do modelo final para deploy.
 
-O projeto demonstra práticas de Engenharia de Dados, Ciência de Dados e versionamento com Git.
+-O projeto demonstra práticas de Engenharia de Dados, Ciência de Dados e versionamento com Git.
 
 ## O projeto demonstra:
 
@@ -64,17 +64,17 @@ O projeto demonstra práticas de Engenharia de Dados, Ciência de Dados e versio
 
 ## Tecnologias Utilizadas
 
-PostgreSQL para integração e enriquecimento dos dados.
+-PostgreSQL para integração e enriquecimento dos dados.
 
-SQL para construção de views incrementais e pipelines one-shot.
+-SQL para construção de views incrementais e pipelines one-shot.
 
-Python para análise exploratória, testes estatísticos e modelagem.
+-Python para análise exploratória, testes estatísticos e modelagem.
 
-Statsmodels para regressão logística no padrão SAS, SPSS e R.
+-Statsmodels para regressão logística no padrão SAS, SPSS e R.
 
-Scikit-Learn para machine learning supervisionado.
+-Scikit-Learn para machine learning supervisionado.
 
-Git e GitHub para versionamento e documentação.
+-Git e GitHub para versionamento e documentação.
 
 ---
 
@@ -88,25 +88,25 @@ Abordagem que utiliza views sucessivas, permitindo acompanhar o enriquecimento d
 
 Fluxo principal:
 
-CREDITO
+-CREDITO
 
-vw_credito_1 historico
+-vw_credito_1 historico
 
-vw_credito_2 proposito
+-vw_credito_2 proposito
 
-vw_credito_3 investimentos
+-vw_credito_3 investimentos
 
-vw_credito_4 emprego
+-vw_credito_4 emprego
 
-vw_credito_5 estado civil
+-vw_credito_5 estado civil
 
-vw_credito_6 fiador
+-vw_credito_6 fiador
 
-vw_credito_7 habitacao
+-vw_credito_7 habitacao
 
-vw_credito_8 outros financiamentos
+-vw_credito_8 outros financiamentos
 
-vw_credito_9 profissao
+-vw_credito_9 profissao
 
 Essa abordagem facilita auditoria, qualidade dos dados e compreensão da linhagem.
 
@@ -126,15 +126,15 @@ TB_CREDITO tabela final normalizada para análise e modelagem.
 
 A tabela final contém:
 
-variáveis demográficas
+-variáveis demográficas
 
-variáveis financeiras
+-variáveis financeiras
 
-características de crédito e risco
+-características de crédito e risco
 
-indicadores socioeconômicos
+-indicadores socioeconômicos
 
-variável alvo target representando inadimplência
+-variável alvo target representando inadimplência
 
 A base é entregue pronta para análise estatística e modelagem.
 
@@ -144,25 +144,25 @@ Arquivo: python/eda_credito.ipynb
 
 Principais análises:
 
-estatísticas descritivas
+-estatísticas descritivas
 
-distribuição do target
+-distribuição do target
 
-histogramas, boxplots e análise de outliers
+-histogramas, boxplots e análise de outliers
 
-cruzamento entre variáveis
+-cruzamento entre variáveis
 
-análise de proporções de categorias
+-análise de proporções de categorias
 
-identificação de variáveis com relevância univariada
+-identificação de variáveis com relevância univariada
 
 Principais conclusões:
 
-o histórico de crédito está entre as variáveis com maior relação com inadimplência
+- o histórico de crédito está entre as variáveis com maior relação com inadimplência
 
-variáveis socioeconômicas possuem menor poder discriminativo
+- variáveis socioeconômicas possuem menor poder discriminativo
 
-há desbalanceamento moderado (aprox. 70 por cento bons, 30 por cento maus)
+- há desbalanceamento moderado (aprox. 70 por cento bons, 30 por cento maus), padrão aceitável em análise de crédito.
 
 ## Modelagem Estatística e Machine Learning
 
@@ -170,19 +170,19 @@ Arquivo: python/modelagem_credito.ipynb
 
 O processo inclui:
 
-Tratamento de dados e engenharia de variáveis.
+-Tratamento de dados e engenharia de variáveis.
 
-Aplicação de One Hot Encoding e padronização.
+-Aplicação de One Hot Encoding e padronização.
 
-Split treino e teste com estratificação.
+-Split treino e teste com estratificação.
 
-Testes estatísticos para cada tipo de variável.
+-Testes estatísticos para cada tipo de variável.
 
-Modelagem estatística com regressão logística (statsmodels).
+-Modelagem estatística com regressão logística (statsmodels).
 
-Seleção de variáveis usando Stepwise Forward por bloco:
+-Seleção de variáveis usando Stepwise Forward por bloco:
 
-se uma dummy do bloco é significativa, todo o bloco é mantido.
+-> se uma dummy do bloco é significativa, todo o bloco é mantido.
 
 Modelos de machine learning:
 
