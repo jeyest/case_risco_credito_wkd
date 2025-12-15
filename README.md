@@ -114,7 +114,7 @@ Essa abordagem facilita auditoria, qualidade dos dados e compreensão da linhage
 
 Arquivo: sql/pipeline_sql_one_shot.sql
 
-Abordagem única, otimizada para ambientes produtivos, se as bases de dados não forem grandes de forma que gere impactos no ambiente. 
+Abordagem otimizada para ambientes produtivos, caso as bases de dados não sejam grandes o suficiente para impactar o desempenho e o ambiente. 
 Gera:
 
 TB_CREDITO_BRUTO com todos os joins diretos das dimensões.
